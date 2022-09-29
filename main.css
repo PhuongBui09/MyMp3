@@ -17,7 +17,7 @@ body {
 }
 .app {
     max-width: 60%;
-    max-height: 361px;
+    height: 361px;
     display: flex;
     justify-content: center;
 }
@@ -118,14 +118,14 @@ body {
 /* ------------------------------------------------------------- */
 .listM {
     width: 40%;
-    min-height: 300px;
+    height: 300px;
 }
 .cacBHs {
     width: 67%;
     height: 361px;
     margin: 0 auto;
     border: 1px solid #d6d6d6;
-    border-radius: 4px;
+    border-radius: 12px;
     overflow: auto;
     background-color: white;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
