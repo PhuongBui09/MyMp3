@@ -8,39 +8,47 @@ const rangeBar = document.querySelector(".range");
 const musicName = document.querySelector(".music-name");
 const musicImg = document.querySelector(".music-img img");
 const musicImgSP = document.querySelector(".music-img");
+const randomIcon = document.querySelector(".random-icon");
+const repeatIcon = document.querySelector(".repeat-icon");
 
 const musicList = [
     {
+        id: 1,
         name: 'Chờ đợi có đáng sợ',
         singer: 'ANDIEZ',
         linkAu: 'ChoDoiCoDangSo.mp3',
         img: './assests/img/ChoDoiCoDangSoImg.jpg'
     },
     {
+        id: 2,
         name: 'Hẹn em kiếp sau',
         singer: 'Lã. x Duy Phúc x TiB',
         linkAu: 'HenEmKiepSau.mp3',
         img: './assests/img/HenEmKiepSau.jpg'
     },
     {
+        id: 3,
         name: 'Lạc vào trong mơ',
         singer: 'Simon C ft. Wuy',
         linkAu: 'LacVaoTrongMo.mp3',
         img: './assests/img/LacVaoTrongMo.jpg'
     },
     {
+        id: 4,
         name: 'Ừ có anh đây',
         singer: 'Tino',
         linkAu: 'UCoAnhDay.mp3',
         img: './assests/img/UCoAnhDay.jpg'
     },
     {
+        id: 5,
         name: 'Có anh đây rồi',
         singer: 'Anh Quân Idol',
         linkAu: 'CoAnhDayRoi.mp3',
         img: './assests/img/CoAnhDayRoi.jpg'
     },
     {
+        id: 6,
         name: 'Anh thề đấy',
         singer: 'Thanh Hưng',
         linkAu: 'AnhTheDay.mp3',
@@ -52,6 +60,7 @@ displayTimer();
 let timer;
 
 let isPlaying = true;
+let isRandom = false;
 let indexSong = 0;
 
 //----------Làm chức năng đổi bài khi hết 1 bài----------
@@ -61,7 +70,11 @@ function thayDoiBaiKetThuc() {
 }
 //----------Làm chức năng đổi bài----------
 nextBtn.addEventListener("click", function() {
-    changeSong(1);
+    if (isRandom) {
+        ranDom();
+    } else {
+        changeSong(1);
+    }
 })
 backBtn.addEventListener("click", function() {
     changeSong(-1);
@@ -123,6 +136,29 @@ function formatTime(number) {
     const minutes = Math.floor(number / 60);
     const second = Math.floor(number - minutes * 60);
     return `${minutes < 10 ? '0' + minutes : minutes}:${second < 10 ? '0' + second : second}`;
+}
+//----------Làm chức năng random bài hát----------
+randomIcon.addEventListener("click", activeIcon);
+function activeIcon() {
+    if (isRandom) {
+        randomIcon.classList.remove("active-btn");
+        isPlaying = true;
+        isRandom = false;
+    } else {
+        randomIcon.classList.add("active-btn");
+        isPlaying = true;
+        isRandom = true;
+    }
+}
+function ranDom() {
+    let newIndex;
+    console.log(indexSong);
+        do {
+            newIndex = Math.floor(Math.random() * musicList.length);
+        } while(newIndex === indexSong);
+        indexSong = newIndex;
+        init(indexSong);
+        playPause();
 }
 //----------Render list----------
 function renderList() {
