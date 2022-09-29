@@ -7,11 +7,12 @@
 body {
     font-family: 'Poppins', sans-serif;
     padding: 20px;
+    height: 100vh;
     background-color: #ddecec;
 }
 .container {
     display: flex;
-    height: 90vh;
+    height: 100%;
     justify-content: space-around;
     align-items: center;
 }
@@ -182,9 +183,9 @@ body {
     .listM {
         width: 100%;
         margin-top: 28px;
-        height: 286px;
+        height: 214px;
     }
     .cacBHs {
-        height: 286px;
+        height: 214px;
     }
 }
