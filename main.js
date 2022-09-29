@@ -61,23 +61,43 @@ let timer;
 
 let isPlaying = true;
 let isRandom = false;
+let isRepeat = false;
 let indexSong = 0;
 
 //----------Làm chức năng đổi bài khi hết 1 bài----------
-song.addEventListener("ended", thayDoiBaiKetThuc);
-function thayDoiBaiKetThuc() {
-    changeSong(1);
+song.addEventListener("ended", thayDoiBaiKetThucRD, thayDoiBaiKetThucRP);
+function thayDoiBaiKetThucRD() {
+    if (isRandom) {
+        ranDom();
+        isPlaying = true;
+    } else if (isRepeat) {
+        song.play();
+        isPlaying = true;
+    } else {
+        changeSong(1);
+    }
+    init(indexSong);
+    playPause();
+}
+function thayDoiBaiKetThucRP() {
+    
 }
 //----------Làm chức năng đổi bài----------
 nextBtn.addEventListener("click", function() {
     if (isRandom) {
         ranDom();
+        isPlaying = true;
     } else {
         changeSong(1);
     }
 })
 backBtn.addEventListener("click", function() {
-    changeSong(-1);
+    if (isRandom) {
+        ranDom();
+        isPlaying = true;
+    } else {
+        changeSong(-1);
+    }
 })
 function changeSong(x) {
     if (x === 1) {
@@ -138,27 +158,39 @@ function formatTime(number) {
     return `${minutes < 10 ? '0' + minutes : minutes}:${second < 10 ? '0' + second : second}`;
 }
 //----------Làm chức năng random bài hát----------
-randomIcon.addEventListener("click", activeIcon);
-function activeIcon() {
-    if (isRandom) {
-        randomIcon.classList.remove("active-btn");
-        isPlaying = true;
-        isRandom = false;
-    } else {
-        randomIcon.classList.add("active-btn");
-        isPlaying = true;
-        isRandom = true;
+randomIcon.addEventListener("click", activeIconRD);
+function activeIconRD() {
+    if (isRepeat == false) {
+        if (isRandom) {
+            randomIcon.classList.remove("active-btn");
+            isRandom = false;
+        } else {
+            randomIcon.classList.add("active-btn");
+            isRandom = true;
+        }
     }
 }
 function ranDom() {
     let newIndex;
-    console.log(indexSong);
         do {
             newIndex = Math.floor(Math.random() * musicList.length);
         } while(newIndex === indexSong);
         indexSong = newIndex;
         init(indexSong);
         playPause();
+}
+//----------Làm chức năng repeat bài hát----------
+repeatIcon.addEventListener("click", activeIconRP);
+function activeIconRP() {
+    if (isRandom == false) {
+        if (isRepeat) {
+            repeatIcon.classList.remove("active-btn");
+            isRepeat = false;
+        } else {
+            repeatIcon.classList.add("active-btn");
+            isRepeat = true;
+        }
+    }
 }
 //----------Render list----------
 function renderList() {
