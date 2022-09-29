@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background-color: #ddecec;
+}
+.container {
+    display: flex;
+    height: 90vh;
+    justify-content: space-around;
+    align-items: center;
+}
+.app {
+    max-width: 60%;
+    max-height: 361px;
+    display: flex;
+    justify-content: center;
+}
+.music {
+    width: 480px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 44px 15px 44px;
+    border-radius: 12px;
+}
+.music-img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 25px;
+}
+.music-img-an {
+    animation: spinner 5s infinite linear;
+}
+.music-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px #ffb86c, 0 0 0 6px white, 0 0 0 9px #ff6bcb;
+}
+.music-name {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.timer {
+    width: 78%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 40px;
+}
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0 40px;
+}
+.play {
+    position: relative;
+    cursor: pointer;
+}
+.play::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right bottom, #ff6bcb, #ffb86c);
+    transform: scale(1.4);
+    border-radius: 100%;
+}
+.play-inner {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    position: relative;
+    z-index: 2;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+.play i {
+    position: absolute;
+    top: 12px;
+    left: 15.2px;
+}
+.range {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 78%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+.range::-webkit-slider-runnable-track {
+    width: 78%;
+    height: 4px;
+    background-color: #eee;
+}
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #30dc44;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px rgba(100, 100, 111, 0.05);
+    margin-top: -3px;
+}
+.fa-solid {
+    cursor: pointer;
+}
+/* ------------------------------------------------------------- */
+.listM {
+    width: 40%;
+    min-height: 300px;
+}
+.cacBHs {
+    width: 67%;
+    height: 361px;
+    margin: 0 auto;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    overflow: auto;
+    background-color: white;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    padding: 9px;
+}
+.cacBH:hover {
+    background-color: #dedede;
+    opacity: 0.6;
+}
+.cacBH {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.cacBH img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.moTa {
+    margin-left: 12px;
+}
+.moTa p {
+    font-size: 14px;
+}
+.moTa span {
+    font-size: 12px;
+    color: #bdb1b1;
+}
+/* ------------------------------------------------------------- */
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* ------------------------------------------------------------- */
+@media screen and (max-width: 800px) {
+    body {
+        padding: 20px 0;
+    }
+    .container {
+        flex-direction: column;
+    }
+    .app {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    .music-name {
+      font-size: 16px;
+    }
+    .listM {
+        width: 100%;
+        margin-top: 28px;
+    }
+}
