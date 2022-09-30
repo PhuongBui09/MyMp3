@@ -220,11 +220,16 @@ body {
     }
     .controls {
         gap: 0 24px;
+        font-size: 14px;
     }
     .range {
         width: 83%;
     }
     .timer {
         width: 83%;
+    }
+    .play-inner {
+        width: 38px;
+        height: 38px;
     }
 }
