@@ -11,6 +11,7 @@ const musicImgSP = document.querySelector(".music-img");
 const randomIcon = document.querySelector(".random-icon");
 const repeatIcon = document.querySelector(".repeat-icon");
 const playList = document.querySelector(".cacBHs");
+const spanCaSi = document.querySelector(".spanCaSi");
 
 const musicList = [
     {
@@ -282,6 +283,7 @@ function init(indexSong) {
     song.setAttribute("src", `./assests/musics/${musicList[indexSong].linkAu}`);
     musicImg.setAttribute("src", musicList[indexSong].img);
     musicName.textContent = musicList[indexSong].name;
+    spanCaSi.textContent = musicList[indexSong].singer;
 
     renderList();
 }

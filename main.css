@@ -51,6 +51,7 @@ body {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: -2px;
+    color: #ff3f00c2;
 }
 .timer {
     width: 78%;
@@ -161,6 +162,7 @@ body {
 .moTa p {
     font-size: 14px;
 }
+.mota-ngoai span,
 .moTa span {
     font-size: 12px;
     background: linear-gradient(to right, #00b4ff, #fda300);
