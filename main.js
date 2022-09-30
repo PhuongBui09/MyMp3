@@ -10,6 +10,7 @@ const musicImg = document.querySelector(".music-img img");
 const musicImgSP = document.querySelector(".music-img");
 const randomIcon = document.querySelector(".random-icon");
 const repeatIcon = document.querySelector(".repeat-icon");
+const playList = document.querySelector(".cacBHs");
 
 const musicList = [
     {
@@ -65,23 +66,22 @@ let isRepeat = false;
 let indexSong = 0;
 
 //----------Làm chức năng đổi bài khi hết 1 bài----------
-song.addEventListener("ended", thayDoiBaiKetThucRD, thayDoiBaiKetThucRP);
-function thayDoiBaiKetThucRD() {
+song.addEventListener("ended", thayDoiBaiKetThuc);
+function thayDoiBaiKetThuc() {
     if (isRandom) {
         ranDom();
         isPlaying = true;
+        scrollActiveList();
     } else if (isRepeat) {
         song.play();
         isPlaying = true;
     } else {
         changeSong(1);
+        isPlaying = true;
     }
     init(indexSong);
     playPause();
-}
-function thayDoiBaiKetThucRP() {
-    
-}
+} 
 //----------Làm chức năng đổi bài----------
 nextBtn.addEventListener("click", function() {
     if (isRandom) {
@@ -89,7 +89,11 @@ nextBtn.addEventListener("click", function() {
         isPlaying = true;
     } else {
         changeSong(1);
+        isPlaying = true;
     }
+    init(indexSong);
+    playPause();
+    scrollActiveList();
 })
 backBtn.addEventListener("click", function() {
     if (isRandom) {
@@ -98,6 +102,9 @@ backBtn.addEventListener("click", function() {
     } else {
         changeSong(-1);
     }
+    init(indexSong);
+    playPause();
+    scrollActiveList();
 })
 function changeSong(x) {
     if (x === 1) {
@@ -106,17 +113,13 @@ function changeSong(x) {
         if (indexSong >= musicList.length) {
             indexSong = 0;
         }
-        isPlaying = true;
     } else if (x === -1) {
         //Back song
         indexSong--;
         if (indexSong < 0) {
             indexSong = musicList.length-1;
         }
-        isPlaying = true;
     }
-    init(indexSong);
-    playPause();
 }
 //----------Làm chức năng kéo thời gian----------
 rangeBar.addEventListener("change", thayDoi);
@@ -192,11 +195,32 @@ function activeIconRP() {
         }
     }
 }
+//----------Làm chức năng active bài hát----------
+function scrollActiveList() {
+    setTimeout(() => {
+        document.querySelector(".cacBH.active-list").scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        })
+    }, 300);
+}
+//----------Làm chức năng click bài hát active----------
+playList.addEventListener("click", clickAT);
+function clickAT(playList) {
+    const playList1 = playList.target.closest('.cacBH:not(.active-list)')
+    if (playList1) {
+        indexSong = Number(playList1.dataset.index - 1);
+        isPlaying = true;
+        init(indexSong);
+        playPause();
+        renderList();
+    }
+}
 //----------Render list----------
 function renderList() {
-    const htmls = musicList.map(nhac => {
+    const htmls = musicList.map((nhac, index) => {
         return `
-                <div class="cacBH">
+                <div class="cacBH ${index === indexSong ? "active-list" : ''}" data-index="${nhac.id}">
                     <img src="${nhac.img}" alt="">
                     <div class="moTa">
                         <p>${nhac.name}</p>

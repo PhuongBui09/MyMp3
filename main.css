@@ -8,7 +8,7 @@ body {
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     height: 100vh;
-    background-color: #ddecec;
+    background-color: #c4ecec;
 }
 .container {
     display: flex;
@@ -27,8 +27,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: white;
-    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background-color: #e6d6a2;
+    box-shadow: rgb(100 100 111 / 60%) 0px 7px 29px 0px;
     padding: 44px 15px 44px;
     border-radius: 12px;
 }
@@ -131,20 +131,20 @@ body {
     border: 1px solid #d6d6d6;
     border-radius: 12px;
     overflow: auto;
-    background-color: white;
-    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-    padding: 9px;
+    background-color: #e4abab;
+    box-shadow: rgb(100 100 111 / 60%) 0px 7px 29px 0px;
 }
-.cacBH:hover {
-    background-color: #dedede;
+.cacBH:active {
     opacity: 0.6;
 }
 .cacBH {
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 6px;
     border-radius: 12px;
     cursor: pointer;
+    background-color: white;
+    margin: 14px;
 }
 .cacBH img {
     width: 44px;
@@ -164,6 +164,13 @@ body {
 }
 .active-btn {
     color: #f4bf8d;
+}
+.active-list {
+    background-color: #6d3af1e8;
+    color: #8dfff6;
+}
+.active-list span {
+    color: white;
 }
 /* ------------------------------------------------------------- */
 @keyframes spinner {
@@ -188,10 +195,19 @@ body {
     }
     .listM {
         width: 100%;
-        margin-top: 28px;
         height: 214px;
     }
     .cacBHs {
+        width: 80%;
         height: 214px;
+    }
+    .controls {
+        gap: 0 24px;
+    }
+    .range {
+        width: 83%;
+    }
+    .timer {
+        width: 83%;
     }
 }
