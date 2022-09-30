@@ -55,6 +55,34 @@ const musicList = [
         linkAu: 'AnhTheDay.mp3',
         img: './assests/img/AnhTheDay.jpg'
     },
+    {
+        id: 7,
+        name: '100 year love',
+        singer: 'NamDuc',
+        linkAu: '100YearLove.mp3',
+        img: './assests/img/100YearLove.jpg'
+    },
+    {
+        id: 8,
+        name: 'Nơi này có anh',
+        singer: 'SƠN TÙNG M-TP',
+        linkAu: 'NoiNayCoAnh.mp3',
+        img: './assests/img/NoiNayCoAnh.jpg'
+    },
+    {
+        id: 9,
+        name: 'Làm người luôn yêu em',
+        singer: 'SƠN TÙNG M-TP',
+        linkAu: 'LamNguoiLuonYeuEm.mp3',
+        img: './assests/img/LamNguoiLuonYeuEm.jpg'
+    },
+    {
+        id: 10,
+        name: 'Đếm Ngày Xa Em',
+        singer: 'Only C ft. Lou Hoàng',
+        linkAu: 'DemNgayXaEm.mp3',
+        img: './assests/img/DemNgayXaEm.jpg'
+    },
 ];
 
 displayTimer();
@@ -81,6 +109,7 @@ function thayDoiBaiKetThuc() {
     }
     init(indexSong);
     playPause();
+    scrollActiveList();
 } 
 //----------Làm chức năng đổi bài----------
 nextBtn.addEventListener("click", function() {
@@ -101,6 +130,7 @@ backBtn.addEventListener("click", function() {
         isPlaying = true;
     } else {
         changeSong(-1);
+        isPlaying = true;
     }
     init(indexSong);
     playPause();
@@ -132,7 +162,7 @@ function playPause() {
     if (isPlaying) {
         song.play();
         playBtn.innerHTML = "<i class='fa-solid fa-pause'></i>";
-        timer = setInterval(displayTimer, 600);
+        timer = setInterval(displayTimer, 1000);
         musicImgSP.classList.add("music-img-an");
         isPlaying = false;
     } else {
@@ -174,13 +204,12 @@ function activeIconRD() {
     }
 }
 function ranDom() {
-    let newIndex;
-        do {
-            newIndex = Math.floor(Math.random() * musicList.length);
-        } while(newIndex === indexSong);
-        indexSong = newIndex;
-        init(indexSong);
-        playPause();
+    do {
+        newIndex = Math.floor(Math.random() * musicList.length);
+    } while(newIndex === indexSong);
+    indexSong = newIndex;
+    init(indexSong);
+    playPause();
 }
 //----------Làm chức năng repeat bài hát----------
 repeatIcon.addEventListener("click", activeIconRP);
@@ -197,17 +226,33 @@ function activeIconRP() {
 }
 //----------Làm chức năng active bài hát----------
 function scrollActiveList() {
-    setTimeout(() => {
-        document.querySelector(".cacBH.active-list").scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-        })
-    }, 300);
+    if (indexSong == 0) {
+        setTimeout(() => {
+            document.querySelector(".cacBH.active-list").scrollIntoView({
+                behavior: "smooth",
+                block: "end"
+            })
+        }, 300);
+    } else if (indexSong == musicList.length-1) {
+        setTimeout(() => {
+            document.querySelector(".cacBH.active-list").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
+        }, 300);
+    } else {
+        setTimeout(() => {
+            document.querySelector(".cacBH.active-list").scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            })
+        }, 300);
+    }
 }
 //----------Làm chức năng click bài hát active----------
 playList.addEventListener("click", clickAT);
 function clickAT(playList) {
-    const playList1 = playList.target.closest('.cacBH:not(.active-list)')
+    const playList1 = playList.target.closest('.cacBH:not(.active-list)');
     if (playList1) {
         indexSong = Number(playList1.dataset.index - 1);
         isPlaying = true;
