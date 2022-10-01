@@ -280,6 +280,15 @@ function clickAT(playList) {
         renderList();
     }
 }
+//----------Làm chức năng đồng hồ----------
+function time() {
+    const d = new Date();
+    let gio = d.getHours();
+    let phut = d.getMinutes();
+    document.getElementById("time").innerHTML = gio + ":" + phut;
+    setTimeout("time()", 1000);
+    }
+    time();
 //----------Render list----------
 function renderList() {
     const htmls = musicList.map((nhac, index) => {

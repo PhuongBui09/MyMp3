@@ -31,6 +31,18 @@ body {
     box-shadow: rgb(100 100 111 / 60%) 0px 7px 29px 0px;
     padding: 34px 15px 24px;
     border-radius: 12px;
+    position: relative;
+}
+#time {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    font-size: 14px;
+    border: 1px solid grey;
+    padding: 4px 9px;
+    border-radius: 8px;
+    background-color: #c1b8b857;
+    color: #5c5b5b;
 }
 .music-img {
     width: 80px;
@@ -161,6 +173,7 @@ body {
 }
 .moTa p {
     font-size: 14px;
+    margin-bottom: -6px;
 }
 .mota-ngoai span,
 .moTa span {
