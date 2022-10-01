@@ -66,14 +66,14 @@ const musicList = [
     {
         id: 8,
         name: 'Nơi này có anh',
-        singer: 'SƠN TÙNG M-TP',
+        singer: 'Sơn Tùng M-TP',
         linkAu: 'NoiNayCoAnh.mp3',
         img: './assests/img/NoiNayCoAnh.jpg'
     },
     {
         id: 9,
         name: 'Làm người luôn yêu em',
-        singer: 'SƠN TÙNG M-TP',
+        singer: 'Sơn Tùng M-TP',
         linkAu: 'LamNguoiLuonYeuEm.mp3',
         img: './assests/img/LamNguoiLuonYeuEm.jpg'
     },
@@ -83,6 +83,20 @@ const musicList = [
         singer: 'Only C ft. Lou Hoàng',
         linkAu: 'DemNgayXaEm.mp3',
         img: './assests/img/DemNgayXaEm.jpg'
+    },
+    {
+        id: 11,
+        name: 'Không phải dạng vừa đâu',
+        singer: 'Sơn Tùng M-TP',
+        linkAu: 'KhongPhaiDangVuaDau.mp3',
+        img: './assests/img/KhongPhaiDangVuaDau.jpg'
+    },
+    {
+        id: 12,
+        name: 'Thê lương',
+        singer: 'PHÚC CHINH',
+        linkAu: 'TheLuong.mp3',
+        img: './assests/img/TheLuong.jpg'
     },
 ];
 
@@ -194,14 +208,16 @@ function formatTime(number) {
 //----------Làm chức năng random bài hát----------
 randomIcon.addEventListener("click", activeIconRD);
 function activeIconRD() {
-    if (isRepeat == false) {
-        if (isRandom) {
-            randomIcon.classList.remove("active-btn");
-            isRandom = false;
-        } else {
-            randomIcon.classList.add("active-btn");
-            isRandom = true;
-        }
+    if (isRepeat) {
+        repeatIcon.classList.remove("active-btn");
+        isRepeat = false;
+    }
+    if (isRandom) {
+        randomIcon.classList.remove("active-btn");
+        isRandom = false;
+    } else {
+        randomIcon.classList.add("active-btn");
+        isRandom = true;
     }
 }
 function ranDom() {
@@ -215,14 +231,16 @@ function ranDom() {
 //----------Làm chức năng repeat bài hát----------
 repeatIcon.addEventListener("click", activeIconRP);
 function activeIconRP() {
-    if (isRandom == false) {
-        if (isRepeat) {
-            repeatIcon.classList.remove("active-btn");
-            isRepeat = false;
-        } else {
-            repeatIcon.classList.add("active-btn");
-            isRepeat = true;
-        }
+    if (isRandom) {
+        randomIcon.classList.remove("active-btn");
+        isRandom = false;
+    }
+    if (isRepeat) {
+        repeatIcon.classList.remove("active-btn");
+        isRepeat = false;
+    } else {
+        repeatIcon.classList.add("active-btn");
+        isRepeat = true;
     }
 }
 //----------Làm chức năng active bài hát----------
