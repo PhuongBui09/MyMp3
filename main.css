@@ -224,22 +224,22 @@ body {
     }
     .listM {
         width: 100%;
-        height: 276px;
+        height: 268px;
         margin-top: 12px;
     }
     .cacBHs {
         width: 80%;
-        height: 276px;
+        height: 268px;
     }
     .cacBH img {
-        width: 34px;
-        height: 34px;
+        width: 36px;
+        height: 36px;
     }
     .moTa p {
-        font-size: 12px;
+        font-size: 14px;
     }
     .moTa span {
-        font-size: 10px;
+        font-size: 12px;
     }
     .controls {
         gap: 0 24px;

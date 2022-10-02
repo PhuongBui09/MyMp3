@@ -251,21 +251,21 @@ function scrollActiveList() {
                 behavior: "smooth",
                 block: "end"
             })
-        }, 300);
+        }, 100);
     } else if (indexSong == musicList.length-1) {
         setTimeout(() => {
             document.querySelector(".cacBH.active-list").scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             })
-        }, 300);
+        }, 100);
     } else {
         setTimeout(() => {
             document.querySelector(".cacBH.active-list").scrollIntoView({
                 behavior: "smooth",
                 block: "nearest"
             })
-        }, 300);
+        }, 100);
     }
 }
 //----------Làm chức năng click bài hát active----------
@@ -280,15 +280,6 @@ function clickAT(playList) {
         renderList();
     }
 }
-//----------Làm chức năng đồng hồ----------
-function time() {
-    const d = new Date();
-    let gio = d.getHours();
-    let phut = d.getMinutes();
-    document.getElementById("time").innerHTML = gio + ":" + phut;
-    setTimeout("time()", 1000);
-    }
-    time();
 //----------Render list----------
 function renderList() {
     const htmls = musicList.map((nhac, index) => {
