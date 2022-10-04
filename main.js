@@ -12,6 +12,8 @@ const randomIcon = document.querySelector(".random-icon");
 const repeatIcon = document.querySelector(".repeat-icon");
 const playList = document.querySelector(".cacBHs");
 const spanCaSi = document.querySelector(".spanCaSi");
+const changeVideos = document.querySelector("#changeVideo")
+const videoApps = document.querySelector(".videoapp");
 
 const musicList = [
     {
@@ -166,6 +168,22 @@ function changeSong(x) {
         }
     }
 }
+//----------Làm chức năng thay đổi background theo thời gian----------
+function timeavc() {
+    let d = new Date();
+    let gio = d.getHours();
+    let phut = d.getMinutes();
+
+    if (gio >= 6 && gio < 16) {
+        changeVideos.src = "./assests/videos/videoSang.mp4";
+        videoApps.style.bottom = -156 + "px";
+    } else if (gio >= 16 && gio < 19) {
+        changeVideos.src = "./assests/videos/videoChieu.mp4";
+    } else {
+        changeVideos.src = "./assests/videos/videoToi.mp4"
+        videoApps.style.bottom = -66 + "px";
+    }
+}
 //----------Làm chức năng kéo thời gian----------
 rangeBar.addEventListener("change", thayDoi);
 function thayDoi() {
@@ -303,6 +321,7 @@ function init(indexSong) {
     musicName.textContent = musicList[indexSong].name;
     spanCaSi.textContent = musicList[indexSong].singer;
 
+    timeavc();
     renderList();
 }
 init(indexSong);

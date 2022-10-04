@@ -22,6 +22,14 @@ body {
     display: flex;
     justify-content: center;
 }
+.videoapp {
+    position: absolute;
+    bottom: -46px;
+}
+.videoapp video {
+    border-radius: 12px 12px 0px 0px;
+    width: 100%;
+}
 .music {
     width: 480px;
     display: flex;
@@ -32,6 +40,7 @@ body {
     padding: 34px 15px 24px;
     border-radius: 12px;
     position: relative;
+    overflow: hidden;
 }
 #time {
     position: absolute;
@@ -48,9 +57,10 @@ body {
     width: 80px;
     height: 80px;
     margin-bottom: 25px;
+    opacity: 0.8;
 }
 .music-img-an {
-    animation: spinner 5s infinite linear;
+    animation: spinner 10s infinite linear;
 }
 .music-img img {
     width: 100%;
@@ -64,6 +74,7 @@ body {
     font-weight: 500;
     margin-bottom: -2px;
     color: #ff3f00c2;
+    z-index: 1;
 }
 .timer {
     width: 78%;
@@ -72,7 +83,8 @@ body {
     justify-content: space-between;
     font-size: 14px;
     color: #999;
-    margin-bottom: 34px;
+    margin-bottom: 24px;
+    z-index: 1;
 }
 .mota-ngoai {
     margin-bottom: 22px;
@@ -81,6 +93,9 @@ body {
     display: flex;
     align-items: center;
     gap: 0 40px;
+    border-radius: 0 0 12px 12px;
+    opacity: 0.8;
+    color: black;
 }
 .font-icon {
     font-size: 14px;
@@ -112,11 +127,12 @@ body {
     left: 15.2px;
 }
 .range {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 78%; /* Specific width is required for Firefox. */
-    background: transparent; /* Otherwise white in Chrome */
+    -webkit-appearance: none;
+    width: 78%;
+    background: transparent;
     cursor: pointer;
     margin-bottom: 12px;
+    z-index: 1;
 }
 .range::-webkit-slider-runnable-track {
     width: 78%;
