@@ -101,6 +101,13 @@ const musicList = [
         linkAu: 'TheLuong.mp3',
         img: './assests/img/TheLuong.jpg'
     },
+    {
+        id: 13,
+        name: 'Mặt mộc',
+        singer: 'Phạm Nguyên Ngọc x VAnh x Ân Nhi',
+        linkAu: 'MatMoc.mp3',
+        img: './assests/img/MatMoc.jpg'
+    },
 ];
 
 displayTimer();
@@ -177,7 +184,7 @@ function timeavc() {
 
     if (gio >= 6 && gio < 16) {
         changeVideos.src = "./assests/videos/videoSang.mp4";
-        videoApps.style.bottom = -156 + "px";
+        videoApps.style.bottom = -168 + "px";
     } else if (gio >= 16 && gio < 19) {
         changeVideos.src = "./assests/videos/videoChieu.mp4";
     } else {
