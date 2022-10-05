@@ -14,6 +14,7 @@ const playList = document.querySelector(".cacBHs");
 const spanCaSi = document.querySelector(".spanCaSi");
 const changeVideos = document.querySelector("#changeVideo")
 const videoApps = document.querySelector(".videoapp");
+const control = document.querySelector(".controls");
 
 const musicList = [
     {
@@ -182,8 +183,10 @@ function timeavc() {
     } else {
         changeVideos.src = "./assests/videos/videoToi.mp4"
         videoApps.style.bottom = -66 + "px";
+        control.style.color = "#ff3f3fbd";
     }
 }
+timeavc();
 //----------Làm chức năng kéo thời gian----------
 rangeBar.addEventListener("change", thayDoi);
 function thayDoi() {
@@ -321,7 +324,6 @@ function init(indexSong) {
     musicName.textContent = musicList[indexSong].name;
     spanCaSi.textContent = musicList[indexSong].singer;
 
-    timeavc();
     renderList();
 }
 init(indexSong);
