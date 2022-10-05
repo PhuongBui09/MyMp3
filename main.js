@@ -185,6 +185,7 @@ function timeavc() {
     if (gio >= 6 && gio < 16) {
         changeVideos.src = "./assests/videos/videoSang.mp4";
         videoApps.style.bottom = -156 + "px";
+        control.style.color = "#ff0000c9";
     } else if (gio >= 16 && gio < 19) {
         changeVideos.src = "./assests/videos/videoChieu.mp4";
     } else {
