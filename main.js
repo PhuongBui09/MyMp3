@@ -108,6 +108,41 @@ const musicList = [
         linkAu: 'MatMoc.mp3',
         img: './assests/img/MatMoc.jpg'
     },
+    {
+        id: 14,
+        name: 'Lỡ thương một người',
+        singer: 'Nguyễn Đình Vũ',
+        linkAu: 'LoThuongMotNguoi.mp3',
+        img: './assests/img/LoThuongMotNguoi.jpg'
+    },
+    {
+        id: 15,
+        name: 'Yêu 5',
+        singer: 'Rhymastic',
+        linkAu: 'Yeu5.mp3',
+        img: './assests/img/Yeu5.jpg'
+    },
+    {
+        id: 16,
+        name: 'Chỉ muốn bên em lúc này',
+        singer: 'JIKI X ft HUY VẠC',
+        linkAu: 'ChiMuonBenEmLucNay.mp3',
+        img: './assests/img/ChiMuonBenEmLucNay.jpg'
+    },
+    {
+        id: 17,
+        name: 'Sau tất cả',
+        singer: 'ERIK',
+        linkAu: 'SauTatCa.mp3',
+        img: './assests/img/SauTatCa.jpg'
+    },
+    {
+        id: 18,
+        name: 'Như phút ban đầu',
+        singer: 'Noo Phước Thịnh',
+        linkAu: 'NhuPhutBanDau.mp3',
+        img: './assests/img/NhuPhutBanDau.jpg'
+    },
 ];
 
 displayTimer();
@@ -335,3 +370,8 @@ function init(indexSong) {
     renderList();
 }
 init(indexSong);
+//----------Load---------- 
+let load = document.getElementById("load");
+window.onload = function() {
+    load.style.display = "none";
+}

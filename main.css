@@ -234,6 +234,9 @@ body {
     body {
         padding: 20px 0;
     }
+    #load {
+        display: none;
+    }
     .container {
         flex-direction: column;
     }
@@ -246,12 +249,12 @@ body {
     }
     .listM {
         width: 100%;
-        height: 268px;
+        height: 278px;
         margin-top: 12px;
     }
     .cacBHs {
         width: 80%;
-        height: 268px;
+        height: 278px;
     }
     .cacBH img {
         width: 36px;
