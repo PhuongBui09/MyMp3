@@ -232,7 +232,7 @@ function timeavc() {
         changeVideos.src = "./assests/videos/videoChieu.mp4";
     } else {
         changeVideos.src = "./assests/videos/videoToi.mp4"
-        videoApps.style.bottom = -200 + "px";
+        videoApps.style.bottom = -185 + "px";
         control.style.color = "#ff3f3fbd";
     }
 }
