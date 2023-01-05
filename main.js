@@ -386,6 +386,6 @@ for(let i = 0; i < countDot; i++){
     newElement.style.setProperty('--i', (0.2 * i) + 's');
     load.appendChild(newElement);
 }
-// window.onload = function() {
-//     load.style.display = "none";
-// }
+window.onload = function() {
+    load.style.display = "none";
+}
