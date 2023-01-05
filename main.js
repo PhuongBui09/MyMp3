@@ -143,6 +143,13 @@ const musicList = [
         linkAu: 'NhuPhutBanDau.mp3',
         img: './assests/img/NhuPhutBanDau.jpg'
     },
+    {
+        id: 19,
+        name: 'Lời yêu ngây dại',
+        singer: 'Kha x MewMew',
+        linkAu: 'LoiYeuNgayDai.mp3',
+        img: './assests/img/LoiYeuNgayDai.jpg'
+    },
 ];
 
 displayTimer();
@@ -225,7 +232,7 @@ function timeavc() {
         changeVideos.src = "./assests/videos/videoChieu.mp4";
     } else {
         changeVideos.src = "./assests/videos/videoToi.mp4"
-        videoApps.style.bottom = -66 + "px";
+        videoApps.style.bottom = -200 + "px";
         control.style.color = "#ff3f3fbd";
     }
 }

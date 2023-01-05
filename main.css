@@ -24,7 +24,7 @@ body {
 }
 .videoapp {
     position: absolute;
-    bottom: -46px;
+    bottom: -156px;
 }
 .videoapp video {
     border-radius: 12px 12px 0px 0px;
@@ -203,7 +203,7 @@ body {
     overflow: hidden;
 }
 .active-btn {
-    background: linear-gradient(to right bottom, #ffd400, #ff0000);
+    background: linear-gradient(to right bottom, #8c00ff, #ff0000);
     color: transparent;
     -webkit-background-clip: text;
 }
@@ -251,6 +251,9 @@ body {
         width: 100%;
         height: 278px;
         margin-top: 12px;
+    }
+    .cacBH {
+        padding: 8px;
     }
     .cacBHs {
         width: 80%;
