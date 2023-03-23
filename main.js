@@ -351,6 +351,36 @@ function clickAT(playList) {
         renderList();
     }
 }
+//----------Làm chức năng hẹn giờ ngủ----------
+let timeoutId;
+function stopMusicAfter(duration) {
+    const audio = document.getElementById("song"); // Lấy thẻ audio
+    if (timeoutId) {
+        clearTimeout(timeoutId); // Hủy bỏ đồng hồ đếm ngược trước đó nếu có
+    }
+    if (duration !== 0) {
+        const timeInMs = duration * 60 * 1000; // Đổi thời gian từ phút sang mili giây
+        timeoutId = setTimeout(function() {
+            audio.pause(); // Dừng nhạc
+            audio.currentTime = 0; // Trở về thời gian 0, tương đương với việc tắt nhạc
+        }, timeInMs);
+    }
+    console.log(timeoutId)
+}
+
+const selectElement = document.querySelector('select');
+selectElement.addEventListener('change', (event) => {
+  const selectedOption = event.target.value;
+  if(selectedOption == "0") {
+    stopMusicAfter(0);
+  } else if(selectedOption == "15") {
+    stopMusicAfter(1);
+  } else if(selectedOption == "30") {
+    stopMusicAfter(2);
+  } else if(selectedOption == "60") {
+    stopMusicAfter(3);
+  }
+});
 //----------Render list----------
 function renderList() {
     const htmls = musicList.map((nhac, index) => {

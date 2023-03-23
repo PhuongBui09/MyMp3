@@ -223,6 +223,14 @@ body {
     font-weight: bold;
     opacity: 0.8;
 }
+select {
+    opacity: 0;
+    appearance: none;
+    border-radius: 50%;
+    width: 33px;
+    height: 12px;
+    border: 1px solid black;
+}
 /*-------------------------------------------------------------*/
 #load {
     width: 100%;
