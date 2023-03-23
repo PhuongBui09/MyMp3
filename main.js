@@ -365,7 +365,6 @@ function stopMusicAfter(duration) {
             audio.currentTime = 0; // Trở về thời gian 0, tương đương với việc tắt nhạc
         }, timeInMs);
     }
-    console.log(timeoutId)
 }
 
 const selectElement = document.querySelector('select');
@@ -374,11 +373,11 @@ selectElement.addEventListener('change', (event) => {
   if(selectedOption == "0") {
     stopMusicAfter(0);
   } else if(selectedOption == "15") {
-    stopMusicAfter(1);
+    stopMusicAfter(15);
   } else if(selectedOption == "30") {
-    stopMusicAfter(2);
+    stopMusicAfter(30);
   } else if(selectedOption == "60") {
-    stopMusicAfter(3);
+    stopMusicAfter(60);
   }
 });
 //----------Render list----------
