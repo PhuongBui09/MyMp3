@@ -150,6 +150,20 @@ const musicList = [
         linkAu: 'LoiYeuNgayDai.mp3',
         img: './assests/img/LoiYeuNgayDai.jpg'
     },
+    {
+        id: 20,
+        name: 'Đường tôi chở em về',
+        singer: 'buitruonglinh',
+        linkAu: 'DuongToiChoEmVe.mp3',
+        img: './assests/img/DuongToiChoEmVe.jpg'
+    },
+    {
+        id: 21,
+        name: 'Anh đã từ bỏ rồi đấy',
+        singer: 'Nguyenn x Aric',
+        linkAu: 'AnhDaTuBoRoiDay.mp3',
+        img: './assests/img/AnhDaTuBoRoiDay.jpg'
+    },
 ];
 
 displayTimer();
@@ -159,6 +173,8 @@ let isPlaying = true;
 let isRandom = false;
 let isRepeat = false;
 let indexSong = 0;
+let timeoutId;
+let randomIndexes = [];
 
 //----------Làm chức năng đổi bài khi hết 1 bài----------
 song.addEventListener("ended", thayDoiBaiKetThuc);
@@ -292,10 +308,19 @@ function activeIconRD() {
     }
 }
 function ranDom() {
+    let newIndex;
+
+    if(randomIndexes.length == musicList.length) {
+        randomIndexes.splice(0, randomIndexes.length);
+    }
+
     do {
         newIndex = Math.floor(Math.random() * musicList.length);
-    } while(newIndex === indexSong);
+    } while (randomIndexes.includes(newIndex));
+
+    randomIndexes.push(newIndex);
     indexSong = newIndex;
+
     init(indexSong);
     playPause();
 }
@@ -352,7 +377,6 @@ function clickAT(playList) {
     }
 }
 //----------Làm chức năng hẹn giờ ngủ----------
-let timeoutId;
 function stopMusicAfter(duration) {
     const audio = document.getElementById("song"); // Lấy thẻ audio
     if (timeoutId) {
@@ -361,24 +385,26 @@ function stopMusicAfter(duration) {
     if (duration !== 0) {
         const timeInMs = duration * 60 * 1000; // Đổi thời gian từ phút sang mili giây
         timeoutId = setTimeout(function() {
-            audio.pause(); // Dừng nhạc
+            isPlaying = false;
+            playPause()
             audio.currentTime = 0; // Trở về thời gian 0, tương đương với việc tắt nhạc
+            init(indexSong)
         }, timeInMs);
     }
 }
 
 const selectElement = document.querySelector('select');
 selectElement.addEventListener('change', (event) => {
-  const selectedOption = event.target.value;
-  if(selectedOption == "0") {
-    stopMusicAfter(0);
-  } else if(selectedOption == "15") {
-    stopMusicAfter(15);
-  } else if(selectedOption == "30") {
-    stopMusicAfter(30);
-  } else if(selectedOption == "60") {
-    stopMusicAfter(60);
-  }
+    const selectedOption = event.target.value;
+    if(selectedOption == "0") {
+        stopMusicAfter(0);
+    } else if(selectedOption == "15") {
+        stopMusicAfter(15);
+    } else if(selectedOption == "30") {
+        stopMusicAfter(30);
+    } else if(selectedOption == "60") {
+        stopMusicAfter(60);
+    }
 });
 //----------Render list----------
 function renderList() {
