@@ -164,6 +164,13 @@ const musicList = [
         linkAu: 'AnhDaTuBoRoiDay.mp3',
         img: './assests/img/AnhDaTuBoRoiDay.jpg'
     },
+    {
+        id: 22,
+        name: 'Gió',
+        singer: 'Jank',
+        linkAu: 'Gio.mp3',
+        img: './assests/img/Gio.jpg'
+    },
 ];
 
 displayTimer();
