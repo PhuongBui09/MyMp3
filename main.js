@@ -171,6 +171,13 @@ const musicList = [
         linkAu: 'Gio.mp3',
         img: './assests/img/Gio.jpg'
     },
+    {
+        id: 23,
+        name: 'Những gì anh nói',
+        singer: 'BOZITT ',
+        linkAu: 'NhungGiAnhNoi.mp3',
+        img: './assests/img/NhungGiAnhNoi.jpg'
+    },
 ];
 
 displayTimer();
