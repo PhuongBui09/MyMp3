@@ -178,6 +178,13 @@ const musicList = [
         linkAu: 'NhungGiAnhNoi.mp3',
         img: './assests/img/NhungGiAnhNoi.jpg'
     },
+    {
+        id: 24,
+        name: 'Hoa cỏ lau',
+        singer: 'Phong Max ',
+        linkAu: 'HoaCoLau.mp3',
+        img: './assests/img/HoaCoLau.jpg'
+    },
 ];
 
 displayTimer();
