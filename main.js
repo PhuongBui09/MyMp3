@@ -197,6 +197,8 @@ let indexSong = 0;
 let timeoutId;
 let randomIndexes = [];
 
+//----------Random danh sách bài hát----------
+let musicRandom = musicList.sort(() => Math.random() - 0.5)
 //----------Làm chức năng đổi bài khi hết 1 bài----------
 song.addEventListener("ended", thayDoiBaiKetThuc);
 function thayDoiBaiKetThuc() {
@@ -390,7 +392,8 @@ playList.addEventListener("click", clickAT);
 function clickAT(playList) {
     const playList1 = playList.target.closest('.cacBH:not(.active-list)');
     if (playList1) {
-        indexSong = Number(playList1.dataset.index - 1);
+        indexSong = Number(playList1.dataset.index);
+        console.log(indexSong)
         isPlaying = true;
         init(indexSong);
         playPause();
@@ -429,9 +432,9 @@ selectElement.addEventListener('change', (event) => {
 });
 //----------Render list----------
 function renderList() {
-    const htmls = musicList.map((nhac, index) => {
+    const htmls = musicRandom.map((nhac, index) => {
         return `
-                <div class="cacBH ${index === indexSong ? "active-list" : ''}" data-index="${nhac.id}">
+                <div class="cacBH ${index === (indexSong) ? "active-list" : ''}" data-index="${index}">
                     <img src="${nhac.img}" alt="">
                     <div class="moTa">
                         <p>${nhac.name}</p>
