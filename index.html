@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My MP3</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assests/font/fontawesome-free-6.1.1-web/css/all.min.css">
-    <link rel="stylesheet" href="./main.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./assests/font/fontawesome-free-6.1.1-web/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
     <div id="load"></div>
     <div class="container">
-        <div class="app">
-            <div class="music">
-                <div class="videoapp">
-                    <video autoplay muted loop id="changeVideo" src=""></video>
-                </div>
-                <div class="music-img">
-                    <img src="./assests/img/ChoDoiCoDangSoImg.jpg" alt="">
-                </div>
-                <h3 class="music-name">
-                    Chờ đợi có đáng sợ
-                </h3>
-                <div class="mota-ngoai">
-                    <span class="spanCaSi">ANDIEZ</span>
-                </div>
-                <input type="range" name="range" id="range" class="range">
-                <audio src="./assests/musics/ChoDoiCoDangSo.mp3" id="song"></audio>
-                <div class="timer">
-                    <div class="thoiGian">4:46</div>
-                    <div class="thoiGianChay">00:00</div>
-                </div>
-                <div class="controls">
-                    <i class="fa-solid fa-repeat font-icon repeat-icon"></i>
-                    <i class="fa-solid fa-backward play-back"></i>
-                    <div class="play">
-                        <div class="play-inner">
-                            <i class="fa-solid fa-play play-icon"></i>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-forward play-next"></i>
-                    <i class="fa-solid fa-shuffle font-icon random-icon"></i>
-                </div>
+      <div class="app">
+        <div class="music">
+          <div class="videoapp">
+            <video autoplay muted loop id="changeVideo" src=""></video>
+          </div>
+          <div class="music-img">
+            <img src="./assests/img/ChoDoiCoDangSoImg.jpg" alt="" />
+          </div>
+          <h3 class="music-name">Chờ đợi có đáng sợ</h3>
+          <div class="mota-ngoai">
+            <span class="spanCaSi">ANDIEZ</span>
+          </div>
+          <input type="range" name="range" id="range" class="range" />
+          <audio src="./assests/musics/ChoDoiCoDangSo.mp3" id="song"></audio>
+          <div class="timer">
+            <div class="thoiGian">4:46</div>
+            <div class="thoiGianChay">00:00</div>
+          </div>
+          <div class="controls">
+            <i class="fa-solid fa-repeat font-icon repeat-icon"></i>
+            <i class="fa-solid fa-backward play-back"></i>
+            <div class="play">
+              <div class="play-inner">
+                <i class="fa-solid fa-play play-icon"></i>
+              </div>
             </div>
+            <i class="fa-solid fa-forward play-next"></i>
+            <i class="fa-solid fa-shuffle font-icon random-icon"></i>
+          </div>
         </div>
-        <select id="timeAfter">
-            <option value="0">Không hẹn</option>
-            <option value="15">Mười lăm phút</option>
-            <option value="30">Nửa tiếng</option>
-            <option value="60">Một tiếng</option>
-        </select>
-        <div class="listM">
-            <div class="cacBHs">
-                
-            </div>
-        </div>
+      </div>
+      <select id="timeAfter">
+        <option value="0">Không hẹn</option>
+        <option value="15">Mười lăm phút</option>
+        <option value="30">Nửa tiếng</option>
+        <option value="60">Một tiếng</option>
+      </select>
+      <div class="listM">
+        <div class="cacBHs"></div>
+      </div>
     </div>
 
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>
