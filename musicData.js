@@ -195,13 +195,13 @@ const musicList = [
     linkAu: "AmThamBenEm.mp3",
     img: "./assests/img/AmThamBenEm.jpg",
   },
-  {
-    id: 29,
-    name: "Âm thầm bên em",
-    singer: "SƠN TÙNG MTP",
-    linkAu: "AmThamBenEm.mp3",
-    img: "./assests/img/AmThamBenEm.jpg",
-  },
+  // {
+  //   id: 29,
+  //   name: "Âm thầm bên em",
+  //   singer: "SƠN TÙNG MTP",
+  //   linkAu: "AmThamBenEm.mp3",
+  //   img: "./assests/img/AmThamBenEm.jpg",
+  // },
 ];
 
 export { musicList };
