@@ -202,6 +202,13 @@ const musicList = [
     linkAu: "CamTuCau.mp3",
     img: "./assests/img/CamTuCau.jpg",
   },
+  {
+    id: 30,
+    name: "Hứa đợi nhưng chẳng tới",
+    singer: "Lâm Tuấn X Vương Thiên Tuấn",
+    linkAu: "HuaDoiNhungChangToi.mp3",
+    img: "./assests/img/HuaDoiNhungChangToi.jpg",
+  },
 ];
 
 export { musicList };
