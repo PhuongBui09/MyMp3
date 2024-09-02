@@ -69,13 +69,41 @@ body {
   object-fit: cover;
   box-shadow: 0 0 0 3px #ffb86c, 0 0 0 6px white, 0 0 0 9px #ff6bcb;
 }
+.music-name-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .music-name {
+  display: inline-block;
+  white-space: nowrap;
   font-size: 18px;
   font-weight: 500;
   margin-bottom: -2px;
   color: #ff3f00c2;
   z-index: 1;
+  animation: marquee 20s linear infinite;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* .music-name {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: -2px;
+  color: #ff3f00c2;
+  z-index: 1;
+  animation: marquee 10s linear infinite;
+} */
+
 .timer {
   width: 78%;
   display: flex;
@@ -190,7 +218,22 @@ body {
 .moTa p {
   font-size: 14px;
   margin-bottom: -6px;
+  -webkit-background-clip: text;
+  opacity: 0.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* animation: marquee 10s linear infinite; */
 }
+/* @keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
 .moTa span {
   font-size: 12px;
   background: linear-gradient(to right, #00b4ff, #fda300);
