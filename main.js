@@ -9,7 +9,8 @@ const thoiGianChay = document.querySelector(".thoiGianChay");
 const rangeBar = document.querySelector(".range");
 const musicName = document.querySelector(".music-name");
 const musicImg = document.querySelector(".music-img img");
-const musicImgSP = document.querySelector(".music-img");
+const musicImgSPAn = document.querySelector(".music-img-an");
+const musicRun = document.querySelector(".music-run");
 const randomIcon = document.querySelector(".random-icon");
 const repeatIcon = document.querySelector(".repeat-icon");
 const playList = document.querySelector(".cacBHs");
@@ -113,19 +114,32 @@ function thayDoi() {
   song.currentTime = rangeBar.value;
 }
 //----------Làm chức năng play----------
+musicRun.addEventListener("animationend", onInitialMarqueeEnd);
+
+function onInitialMarqueeEnd() {
+  // Chuyển sang animation continuous sau khi chạy lần đầu
+  musicRun.style.animation = "none"; // Loại bỏ animation hiện tại
+  musicRun.offsetHeight; // Kích hoạt reflow để trình duyệt nhận ra sự thay đổi
+  musicRun.style.transform = "translateX(100%)"; // Đặt lại vị trí để bắt đầu từ bên phải
+  musicRun.style.animation = "continuousMarquee 20s linear infinite"; // Đặt lại animation mới từ phải sang trái
+}
+
 playBtn.addEventListener("click", playPause);
+
 function playPause() {
   if (isPlaying) {
     song.play();
     playBtn.innerHTML = "<i class='fa-solid fa-pause'></i>";
     timer = setInterval(displayTimer, 1000);
-    musicImgSP.classList.add("music-img-an");
+    musicImgSPAn.style.animationPlayState = "running";
+    musicRun.style.animationPlayState = "running";
     isPlaying = false;
   } else {
     song.pause();
     playBtn.innerHTML = "<i class='fa-solid fa-play'></i>";
     clearInterval(timer);
-    musicImgSP.classList.remove("music-img-an");
+    musicImgSPAn.style.animationPlayState = "paused";
+    musicRun.style.animationPlayState = "paused";
     isPlaying = true;
   }
 }
