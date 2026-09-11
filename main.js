@@ -18,6 +18,7 @@ const spanCaSi = document.querySelector(".spanCaSi");
 const changeVideos = document.querySelector("#changeVideo");
 const videoApps = document.querySelector(".videoapp");
 const control = document.querySelector(".controls");
+const countNumber = document.querySelector(".count-number");
 
 displayTimer();
 let timer;
@@ -93,23 +94,25 @@ function changeSong(x) {
 function timeavc() {
   let d = new Date();
   let gio = d.getHours();
-  let phut = d.getMinutes();
 
   if (gio >= 6 && gio < 13) {
     changeVideos.src = "./assests/videos/videoSang.mp4";
-    videoApps.style.bottom = -156 + "px";
+    videoApps.dataset.mood = "morning";
     control.style.color = "#ff0000c9";
   } else if (gio >= 13 && gio < 17) {
     changeVideos.src = "./assests/videos/videoChieu.mp4";
+    videoApps.dataset.mood = "afternoon";
   } else {
     changeVideos.src = "./assests/videos/videoToi.mp4";
-    videoApps.style.bottom = -79 + "px";
+    videoApps.dataset.mood = "night";
     control.style.color = "#ff3f3fbd";
   }
 }
 timeavc();
 //----------Làm chức năng kéo thời gian----------
 rangeBar.addEventListener("change", thayDoi);
+song.addEventListener("timeupdate", displayTimer);
+song.addEventListener("loadedmetadata", displayTimer);
 function thayDoi() {
   song.currentTime = rangeBar.value;
 }
@@ -148,6 +151,8 @@ function displayTimer() {
   const { duration, currentTime } = song;
   rangeBar.max = duration;
   rangeBar.value = currentTime;
+  const progress = duration ? (currentTime / duration) * 100 : 0;
+  rangeBar.style.background = `linear-gradient(90deg, #ff8ebd 0%, #ffbc8a ${progress}%, rgba(255, 255, 255, 0.16) ${progress}%)`;
   thoiGianChay.textContent = formatTime(currentTime);
   if (!duration) {
     thoiGian.textContent = "00:00";
@@ -176,6 +181,8 @@ function activeIconRD() {
     randomIcon.classList.add("active-btn");
     isRandom = true;
   }
+  randomIcon.setAttribute("aria-pressed", isRandom);
+  repeatIcon.setAttribute("aria-pressed", isRepeat);
 }
 function ranDom() {
   let newIndex;
@@ -208,6 +215,8 @@ function activeIconRP() {
     repeatIcon.classList.add("active-btn");
     isRepeat = true;
   }
+  randomIcon.setAttribute("aria-pressed", isRandom);
+  repeatIcon.setAttribute("aria-pressed", isRepeat);
 }
 //----------Làm chức năng active bài hát----------
 function scrollActiveList() {
@@ -289,10 +298,13 @@ function renderList() {
                         <p>${nhac.name}</p>
                         <span>${nhac.singer}</span>
                     </div>
+                    <span class="song-index">${String(index + 1).padStart(2, "0")}</span>
                 </div>
                 `;
   });
   document.querySelector(".cacBHs").innerHTML = htmls.join(" ");
+  countNumber.textContent = musicRandom.length;
+  animatePlaylist();
 }
 //----------Render----------
 function init(indexSong) {
@@ -305,15 +317,92 @@ function init(indexSong) {
   renderList();
 }
 init(indexSong);
-//----------Load----------
-let load = document.getElementById("load");
-let countDot = 20;
-for (let i = 0; i < countDot; i++) {
-  let newElement = document.createElement("div");
-  newElement.classList.add("item");
-  newElement.style.setProperty("--i", 0.2 * i + "s");
-  load.appendChild(newElement);
+//----------Motion----------
+function animatePlaylist() {
+  if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  window.gsap.fromTo(
+    ".cacBH",
+    { y: 8 },
+    { y: 0, duration: 0.35, stagger: 0.025, ease: "power2.out", clearProps: "transform" }
+  );
 }
-window.onload = function () {
-  load.style.display = "none";
-};
+
+function initMotion() {
+  if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const gsap = window.gsap;
+  const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  intro
+    .from(".topbar", { y: -20, duration: 0.65 })
+    .from(".music", { x: -26, duration: 0.75 }, "-=0.35")
+    .from(".listM", { x: 26, duration: 0.75 }, "-=0.62")
+    .from(".page-footer", { y: 10, duration: 0.4 }, "-=0.3");
+
+  gsap.to(".ambient-one", { x: 22, y: 18, duration: 7, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".ambient-two", { x: -20, y: -15, duration: 9, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".stage-ring-one", { rotationZ: 337, duration: 18, repeat: -1, ease: "none" });
+  gsap.to(".stage-ring-two", { rotationZ: -320, duration: 24, repeat: -1, ease: "none" });
+  gsap.to(".album-stage", {
+    y: -7,
+    rotationX: 3,
+    rotationY: -4,
+    duration: 4.2,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+  gsap.to(".stage-shine", {
+    x: 22,
+    y: -8,
+    opacity: 0.1,
+    duration: 3.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+  });
+
+  const player = document.querySelector(".music");
+  if (window.matchMedia("(pointer: fine)").matches) {
+    player.addEventListener("mousemove", (event) => {
+      const bounds = player.getBoundingClientRect();
+      const rotateX = ((event.clientY - bounds.top) / bounds.height - 0.5) * -2.5;
+      const rotateY = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2.5;
+      gsap.to(player, { rotateX, rotateY, transformPerspective: 900, duration: 0.5, overwrite: true });
+    });
+    player.addEventListener("mouseleave", () => {
+      gsap.to(player, { rotateX: 0, rotateY: 0, duration: 0.7, ease: "power3.out" });
+    });
+  }
+}
+
+//----------Load----------
+const load = document.getElementById("load");
+let hasHiddenLoader = false;
+
+function hideLoader() {
+  if (hasHiddenLoader) {
+    return;
+  }
+  hasHiddenLoader = true;
+
+  if (window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.gsap.to(load, {
+      autoAlpha: 0,
+      duration: 0.65,
+      ease: "power2.inOut",
+      onComplete: () => load.remove(),
+    });
+  } else {
+    load.remove();
+  }
+  initMotion();
+}
+
+window.addEventListener("load", hideLoader);
+window.setTimeout(hideLoader, 1400);
