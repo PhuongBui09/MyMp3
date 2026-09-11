@@ -1646,8 +1646,8 @@ body.two-panel-mode .view-toggle::before {
 @media (min-width: 881px) {
   body.two-panel-mode .player-layout {
     display: grid;
-    height: min(600px, calc(100vh - 180px));
-    grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+    height: min(650px, calc(100vh - 165px));
+    grid-template-columns: minmax(0, 1.06fr) minmax(400px, 0.94fr);
     isolation: auto;
   }
 
@@ -1678,7 +1678,7 @@ body.two-panel-mode .view-toggle::before {
     width: auto;
     height: 100%;
     min-height: 0;
-    padding: 25px 19px 19px;
+    padding: 22px 21px 18px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 29px;
@@ -1695,7 +1695,7 @@ body.two-panel-mode .view-toggle::before {
   }
 
   body.two-panel-mode .player-layout > .listM .queue-heading h2 {
-    font-size: 22px;
+    font-size: 23px;
   }
 
   body.two-panel-mode .player-layout > .listM .queue-count {
@@ -1705,7 +1705,8 @@ body.two-panel-mode .view-toggle::before {
 
   body.two-panel-mode .player-layout > .listM .queue-caption {
     position: static;
-    margin: 16px 9px 13px;
+    margin: 14px 9px 13px;
+    font-size: 11px;
     transform: none;
   }
 
@@ -1730,6 +1731,8 @@ body.two-panel-mode .view-toggle::before {
     padding: 0 4px 0 0;
     perspective: none;
     transform: none !important;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
   }
 
   body.two-panel-mode .player-layout > .listM .cacBH {
@@ -1739,13 +1742,13 @@ body.two-panel-mode .view-toggle::before {
     display: flex;
     width: 100%;
     height: auto;
-    min-height: 61px;
+    min-height: 68px;
     align-items: center;
     justify-content: initial;
     margin: 5px 0;
-    padding: 7px 10px;
+    padding: 8px 11px;
     border: 1px solid transparent;
-    border-radius: 15px;
+    border-radius: 17px;
     background: rgba(255, 255, 255, 0.045);
     box-shadow: none;
     transform: none !important;
@@ -1761,9 +1764,9 @@ body.two-panel-mode .view-toggle::before {
   }
 
   body.two-panel-mode .player-layout > .listM .cacBH img {
-    width: 43px;
-    height: 43px;
-    border-radius: 12px;
+    width: 49px;
+    height: 49px;
+    border-radius: 14px;
   }
 
   body.two-panel-mode .player-layout > .listM .cacBH .moTa,
@@ -1779,17 +1782,25 @@ body.two-panel-mode .view-toggle::before {
     padding-left: 10px;
   }
 
+  body.two-panel-mode .player-layout > .listM .cacBH .moTa p {
+    font-size: 12px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH .moTa span {
+    font-size: 10px;
+  }
+
   body.two-panel-mode .player-layout > .listM .active-list {
     width: 100%;
     height: auto;
     justify-content: initial;
-    padding: 7px 10px;
+    padding: 8px 11px;
     transform: none !important;
   }
 
   body.two-panel-mode .player-layout > .listM .active-list img {
-    width: 43px;
-    height: 43px;
+    width: 49px;
+    height: 49px;
   }
 
   body.two-panel-mode .player-layout > .listM .active-list .song-index {

@@ -310,7 +310,10 @@ orbitStepNext.addEventListener("click", () => rotateOrbit(1));
 playList.addEventListener(
   "wheel",
   (event) => {
-    if (window.matchMedia("(min-width: 881px)").matches) {
+    if (
+      window.matchMedia("(min-width: 881px)").matches &&
+      !document.body.classList.contains("two-panel-mode")
+    ) {
       event.preventDefault();
       rotateOrbit(event.deltaY > 0 ? -1 : 1);
     }
