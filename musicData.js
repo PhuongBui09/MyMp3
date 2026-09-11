@@ -209,6 +209,27 @@ const musicList = [
     linkAu: "HuaDoiNhungChangToi.mp3",
     img: "./assests/img/HuaDoiNhungChangToi.jpg",
   },
+  {
+    id: 31,
+    name: "Người dưng",
+    singer: "Jack",
+    linkAu: "NguoiDung.mp3",
+    img: "./assests/img/NguoiDung.jpg",
+  },
+  {
+    id: 32,
+    name: "Lưu niên",
+    singer: "Jack",
+    linkAu: "LuuNien.mp3",
+    img: "./assests/img/LuuNien.jpg",
+  },
+  {
+    id: 33,
+    name: "Nếu phải giữ cho em",
+    singer: "Jack",
+    linkAu: "NeuPhaiGiuChoEm.mp3",
+    img: "./assests/img/NeuPhaiGiuChoEm.jpg",
+  },
 ];
 
 export { musicList };
