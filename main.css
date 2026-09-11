@@ -88,7 +88,7 @@ select {
 .container {
   position: relative;
   z-index: 1;
-  width: min(1120px, calc(100% - 64px));
+  width: min(1240px, calc(100% - 48px));
   height: 100vh;
   min-height: 100vh;
   margin: 0 auto;
@@ -1062,7 +1062,7 @@ select {
   .player-layout {
     position: relative;
     display: block;
-    height: min(640px, calc(100vh - 154px));
+    height: min(700px, calc(100vh - 180px));
     isolation: isolate;
   }
 
@@ -1102,12 +1102,34 @@ select {
   }
 
   .player-layout > .app .music {
-    width: min(470px, 100%);
+    width: min(530px, 100%);
     height: 100%;
     pointer-events: auto;
     background: linear-gradient(145deg, rgba(50, 41, 74, 0.86), rgba(20, 17, 34, 0.78));
     box-shadow: 0 35px 90px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 174, 205, 0.04), inset 0 1px rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(14px);
+  }
+
+  .player-layout > .app .album-stage {
+    width: 238px;
+    height: 238px;
+    margin-top: 19px;
+    margin-bottom: 24px;
+  }
+
+  .player-layout > .app .music-img {
+    width: 188px;
+    height: 188px;
+  }
+
+  .player-layout > .app .stage-ring-one {
+    width: 222px;
+    height: 222px;
+  }
+
+  .player-layout > .app .stage-ring-two {
+    width: 238px;
+    height: 238px;
   }
 
   .player-layout > .listM {
@@ -1478,5 +1500,309 @@ select {
 @media (max-width: 880px) {
   .quick-pick {
     margin-top: 2px;
+  }
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.view-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 154px;
+  padding: 5px 7px 5px 5px;
+  overflow: hidden;
+  color: var(--muted-bright);
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 19px;
+  outline: none;
+  background: rgba(28, 23, 45, 0.72);
+  box-shadow: 0 9px 25px rgba(0, 0, 0, 0.14), inset 0 1px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.view-toggle::before {
+  position: absolute;
+  top: -28px;
+  right: -18px;
+  width: 75px;
+  height: 75px;
+  content: "";
+  border: 1px solid rgba(255, 142, 189, 0.24);
+  border-radius: 50%;
+  transform: rotate(25deg);
+  transition: transform 500ms ease, border-color 220ms ease;
+}
+
+.view-toggle:hover,
+.view-toggle:focus-visible {
+  border-color: rgba(255, 142, 189, 0.65);
+  outline: none;
+  background: rgba(39, 28, 57, 0.9);
+  box-shadow: 0 12px 30px rgba(255, 142, 189, 0.12), inset 0 1px rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.view-toggle:hover::before,
+.view-toggle:focus-visible::before {
+  border-color: rgba(181, 165, 255, 0.55);
+  transform: rotate(145deg) scale(1.14);
+}
+
+.view-toggle:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.view-toggle-glyph {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 31px;
+  height: 31px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #2a2138;
+  font-size: 13px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--peach), var(--pink));
+  box-shadow: 0 5px 15px rgba(255, 142, 189, 0.24);
+}
+
+.view-toggle-glyph i {
+  grid-area: 1 / 1;
+}
+
+.view-toggle-glyph .list-glyph {
+  display: none;
+}
+
+.view-toggle-copy {
+  position: relative;
+  z-index: 1;
+  display: block;
+  min-width: 68px;
+}
+
+.view-toggle-copy small,
+.view-toggle-copy strong {
+  display: block;
+  white-space: nowrap;
+}
+
+.view-toggle-copy small {
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.view-toggle-copy strong {
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.view-toggle-arrow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  place-items: center;
+  color: var(--pink);
+  font-size: 9px;
+  border: 1px solid rgba(255, 142, 189, 0.25);
+  border-radius: 50%;
+}
+
+body.two-panel-mode .view-toggle-glyph {
+  color: #2a2138;
+  background: linear-gradient(135deg, var(--lilac), var(--peach));
+}
+
+body.two-panel-mode .view-toggle-glyph .orbit-glyph {
+  display: none;
+}
+
+body.two-panel-mode .view-toggle-glyph .list-glyph {
+  display: block;
+}
+
+body.two-panel-mode .view-toggle::before {
+  border-color: rgba(181, 165, 255, 0.28);
+  transform: rotate(145deg);
+}
+
+@media (min-width: 881px) {
+  body.two-panel-mode .player-layout {
+    display: grid;
+    height: min(600px, calc(100vh - 180px));
+    grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+    isolation: auto;
+  }
+
+  body.two-panel-mode .player-layout::before,
+  body.two-panel-mode .player-layout::after {
+    opacity: 0;
+  }
+
+  body.two-panel-mode .player-layout > .app {
+    position: relative;
+    inset: auto;
+    display: flex;
+    width: auto;
+    height: 100%;
+    place-items: initial;
+    pointer-events: auto;
+  }
+
+  body.two-panel-mode .player-layout > .app .music {
+    width: 100%;
+    height: 100%;
+  }
+
+  body.two-panel-mode .player-layout > .listM {
+    position: relative;
+    inset: auto;
+    display: flex;
+    width: auto;
+    height: 100%;
+    min-height: 0;
+    padding: 25px 19px 19px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 29px;
+    background: rgba(26, 23, 42, 0.62);
+    box-shadow: 0 30px 75px rgba(0, 0, 0, 0.19), inset 0 1px rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+  }
+
+  body.two-panel-mode .player-layout > .listM .queue-heading {
+    position: static;
+    width: auto;
+    padding: 0 9px;
+    transform: none;
+  }
+
+  body.two-panel-mode .player-layout > .listM .queue-heading h2 {
+    font-size: 22px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .queue-count {
+    display: inline-block;
+    margin-top: 0;
+  }
+
+  body.two-panel-mode .player-layout > .listM .queue-caption {
+    position: static;
+    margin: 16px 9px 13px;
+    transform: none;
+  }
+
+  body.two-panel-mode .player-layout > .listM .orbit-controls {
+    display: none;
+  }
+
+  body.two-panel-mode .player-layout > .listM .quick-pick {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin: 0 0 8px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBHs {
+    position: static;
+    flex: 1;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    padding: 0 4px 0 0;
+    perspective: none;
+    transform: none !important;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 61px;
+    align-items: center;
+    justify-content: initial;
+    margin: 5px 0;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.045);
+    box-shadow: none;
+    transform: none !important;
+    transform-origin: initial;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH:nth-child(2n) {
+    transform: none !important;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH:hover {
+    transform: translateX(3px) !important;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH img {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH .moTa,
+  body.two-panel-mode .player-layout > .listM .active-list .moTa {
+    display: block;
+    width: auto;
+    margin-left: 11px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH .song-index {
+    position: static;
+    margin-left: auto;
+    padding-left: 10px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .active-list {
+    width: 100%;
+    height: auto;
+    justify-content: initial;
+    padding: 7px 10px;
+    transform: none !important;
+  }
+
+  body.two-panel-mode .player-layout > .listM .active-list img {
+    width: 43px;
+    height: 43px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .active-list .song-index {
+    display: block;
+  }
+}
+
+@media (max-width: 880px) {
+  .topbar-actions {
+    gap: 0;
+  }
+
+  .view-toggle {
+    display: none;
   }
 }

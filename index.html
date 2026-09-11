@@ -47,9 +47,22 @@
             <small>listen slowly</small>
           </span>
         </a>
-        <div class="topbar-note">
-          <span class="topbar-dot"></span>
-          <span>your little music corner</span>
+        <div class="topbar-actions">
+          <div class="topbar-note">
+            <span class="topbar-dot"></span>
+            <span>your little music corner</span>
+          </div>
+          <button class="view-toggle" id="viewToggle" type="button" aria-pressed="false" aria-label="Chuyển sang giao diện danh sách">
+            <span class="view-toggle-glyph" aria-hidden="true">
+              <i class="fa-solid fa-atom orbit-glyph"></i>
+              <i class="fa-solid fa-list-ul list-glyph"></i>
+            </span>
+            <span class="view-toggle-copy">
+              <small>switch dimension</small>
+              <strong class="view-toggle-mode">orbit view</strong>
+            </span>
+            <span class="view-toggle-arrow"><i class="fa-solid fa-arrow-right-arrow-left"></i></span>
+          </button>
         </div>
       </header>
 
@@ -142,10 +155,6 @@
             </div>
             <span class="queue-count"><span class="count-number">33</span> signals</span>
           </div>
-          <div class="queue-caption">
-            <span>click a fragment to shift the universe</span>
-            <i class="fa-solid fa-arrows-rotate"></i>
-          </div>
           <div class="orbit-controls" aria-label="Điều hướng quỹ đạo bài hát">
             <button class="orbit-step-prev" type="button" aria-label="Xoay quỹ đạo ngược lại">
               <i class="fa-solid fa-chevron-left"></i>
@@ -166,12 +175,6 @@
           <div class="cacBHs"></div>
         </aside>
       </section>
-
-      <footer class="page-footer">
-        <span><i class="fa-regular fa-heart"></i> made for quiet moments</span>
-        <span class="footer-line"></span>
-        <span>MY MP3 / 2024</span>
-      </footer>
     </main>
 
     <script type="module" src="./main.js"></script>

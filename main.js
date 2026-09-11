@@ -23,6 +23,7 @@ const orbitStepPrev = document.querySelector(".orbit-step-prev");
 const orbitStepNext = document.querySelector(".orbit-step-next");
 const songSearch = document.querySelector("#songSearch");
 const searchResults = document.querySelector("#searchResults");
+const viewToggle = document.querySelector("#viewToggle");
 
 displayTimer();
 let timer;
@@ -378,12 +379,90 @@ document.addEventListener("keydown", (event) => {
     songSearch.focus();
   }
 });
+
+function updateViewToggle() {
+  const isPanelView = document.body.classList.contains("two-panel-mode");
+  const modeLabel = viewToggle.querySelector(".view-toggle-mode");
+  viewToggle.setAttribute("aria-pressed", isPanelView);
+  viewToggle.setAttribute(
+    "aria-label",
+    isPanelView ? "Chuyển sang giao diện quỹ đạo 3D" : "Chuyển sang giao diện danh sách"
+  );
+  modeLabel.textContent = isPanelView ? "list view" : "orbit view";
+}
+
+function startOrbitDrift() {
+  if (!window.gsap) return;
+
+  window.gsap.killTweensOf(".cacBHs");
+  window.gsap.set(".cacBHs", { clearProps: "transform" });
+  if (
+    window.matchMedia("(min-width: 881px)").matches &&
+    !document.body.classList.contains("two-panel-mode") &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    window.gsap.to(".cacBHs", {
+      rotationX: 3,
+      rotationZ: 2,
+      duration: 16,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }
+}
+
+function toggleView() {
+  const switchToPanel = !document.body.classList.contains("two-panel-mode");
+  const gsap = window.gsap;
+
+  if (!gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.body.classList.toggle("two-panel-mode", switchToPanel);
+    updateViewToggle();
+    startOrbitDrift();
+    return;
+  }
+
+  viewToggle.disabled = true;
+  gsap.killTweensOf(".player-layout");
+  gsap
+    .timeline({
+      onComplete: () => {
+        viewToggle.disabled = false;
+      },
+    })
+    .to(".player-layout", {
+      rotationY: switchToPanel ? -11 : 11,
+      scale: 0.94,
+      filter: "blur(3px)",
+      duration: 0.34,
+      ease: "power3.in",
+    })
+    .add(() => {
+      document.body.classList.toggle("two-panel-mode", switchToPanel);
+      updateViewToggle();
+      startOrbitDrift();
+    })
+    .fromTo(
+      ".player-layout",
+      { rotationY: switchToPanel ? 11 : -11, scale: 0.94, filter: "blur(3px)" },
+      { rotationY: 0, scale: 1, filter: "blur(0px)", duration: 0.62, ease: "expo.out" }
+    )
+    .from(
+      switchToPanel ? ".two-panel-mode .cacBH" : ".cacBH",
+      { y: 12, duration: 0.34, stagger: 0.018, clearProps: "transform" },
+      "-=0.36"
+    );
+}
+
+viewToggle.addEventListener("click", toggleView);
+updateViewToggle();
 //----------Render list----------
 function renderList() {
   const htmls = musicRandom.map((nhac, index) => {
     const orbitAngle = (index / musicRandom.length) * 360 + orbitOffset;
     const orbitAngleReverse = -orbitAngle;
-    const orbitRadius = 208 + (index % 3) * 34;
+    const orbitRadius = 250 + (index % 3) * 42;
     const orbitDepth = 28 + (index % 4) * 16;
     return `
                 <div class="cacBH ${
@@ -463,16 +542,7 @@ function initMotion() {
     yoyo: true,
     ease: "sine.inOut",
   });
-  if (window.matchMedia("(min-width: 881px)").matches) {
-    gsap.to(".cacBHs", {
-      rotationX: 3,
-      rotationZ: 2,
-      duration: 16,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-  }
+  startOrbitDrift();
 
   const player = document.querySelector(".music");
   if (window.matchMedia("(pointer: fine)").matches) {
