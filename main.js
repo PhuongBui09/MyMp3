@@ -310,7 +310,10 @@ orbitStepNext.addEventListener("click", () => rotateOrbit(1));
 playList.addEventListener(
   "wheel",
   (event) => {
-    if (window.matchMedia("(min-width: 881px)").matches) {
+    if (
+      window.matchMedia("(min-width: 881px)").matches &&
+      !document.body.classList.contains("two-panel-mode")
+    ) {
       event.preventDefault();
       rotateOrbit(event.deltaY > 0 ? -1 : 1);
     }
@@ -462,7 +465,7 @@ function renderList() {
   const htmls = musicRandom.map((nhac, index) => {
     const orbitAngle = (index / musicRandom.length) * 360 + orbitOffset;
     const orbitAngleReverse = -orbitAngle;
-    const orbitRadius = 250 + (index % 3) * 42;
+    const orbitRadius = 300 + (index % 3) * 48;
     const orbitDepth = 28 + (index % 4) * 16;
     return `
                 <div class="cacBH ${

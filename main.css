@@ -88,14 +88,14 @@ select {
 .container {
   position: relative;
   z-index: 1;
-  width: min(1240px, calc(100% - 48px));
+  width: min(1400px, calc(100% - 32px));
   height: 100vh;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 30px 0 24px;
+  padding: 18px 0 14px;
   perspective: 1400px;
 }
 
@@ -104,7 +104,7 @@ select {
   align-items: center;
   justify-content: space-between;
   flex: 0 0 auto;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .brand {
@@ -1062,7 +1062,7 @@ select {
   .player-layout {
     position: relative;
     display: block;
-    height: min(700px, calc(100vh - 180px));
+    height: min(760px, calc(100vh - 125px));
     isolation: isolate;
   }
 
@@ -1072,8 +1072,8 @@ select {
     top: 50%;
     left: 50%;
     display: block;
-    width: min(760px, 72vw);
-    height: min(760px, 72vw);
+    width: min(900px, 78vw);
+    height: min(900px, 78vw);
     content: "";
     pointer-events: none;
     border: 1px solid rgba(255, 174, 205, 0.15);
@@ -1083,8 +1083,8 @@ select {
   }
 
   .player-layout::after {
-    width: min(980px, 94vw);
-    height: min(440px, 43vw);
+    width: min(1120px, 98vw);
+    height: min(520px, 50vw);
     border-color: rgba(181, 165, 255, 0.12);
     box-shadow: 0 0 110px rgba(181, 165, 255, 0.08);
     transform: translate(-50%, -50%) rotateY(62deg) rotateZ(16deg);
@@ -1102,7 +1102,7 @@ select {
   }
 
   .player-layout > .app .music {
-    width: min(530px, 100%);
+    width: min(580px, 100%);
     height: 100%;
     pointer-events: auto;
     background: linear-gradient(145deg, rgba(50, 41, 74, 0.86), rgba(20, 17, 34, 0.78));
@@ -1111,25 +1111,25 @@ select {
   }
 
   .player-layout > .app .album-stage {
-    width: 238px;
-    height: 238px;
-    margin-top: 19px;
-    margin-bottom: 24px;
+    width: 258px;
+    height: 258px;
+    margin-top: 14px;
+    margin-bottom: 18px;
   }
 
   .player-layout > .app .music-img {
-    width: 188px;
-    height: 188px;
+    width: 206px;
+    height: 206px;
   }
 
   .player-layout > .app .stage-ring-one {
-    width: 222px;
-    height: 222px;
+    width: 242px;
+    height: 242px;
   }
 
   .player-layout > .app .stage-ring-two {
-    width: 238px;
-    height: 238px;
+    width: 258px;
+    height: 258px;
   }
 
   .player-layout > .listM {
@@ -1246,13 +1246,13 @@ select {
     top: 50%;
     left: 50%;
     display: flex;
-    width: 66px;
-    height: 66px;
+    width: 76px;
+    height: 76px;
     min-height: 0;
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 5px;
+    padding: 6px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 20px;
     background: rgba(36, 30, 57, 0.72);
@@ -1270,8 +1270,8 @@ select {
   }
 
   .player-layout > .listM .cacBH img {
-    width: 54px;
-    height: 54px;
+    width: 62px;
+    height: 62px;
     border: 2px solid rgba(255, 255, 255, 0.16);
     border-radius: 16px;
   }
@@ -1301,8 +1301,8 @@ select {
 
   .player-layout > .listM .cacBH.active-list {
     z-index: 6;
-    width: 182px;
-    height: 72px;
+    width: 202px;
+    height: 78px;
     justify-content: flex-start;
     padding: 7px;
     border-color: rgba(255, 174, 205, 0.7);
@@ -1312,15 +1312,15 @@ select {
   }
 
   .player-layout > .listM .active-list img {
-    width: 56px;
-    height: 56px;
+    width: 62px;
+    height: 62px;
     flex: 0 0 auto;
     border-radius: 16px;
   }
 
   .player-layout > .listM .active-list .moTa {
     display: block;
-    width: 94px;
+    width: 110px;
     margin-left: 9px;
   }
 
@@ -1341,6 +1341,7 @@ select {
   .page-footer {
     position: relative;
     z-index: 5;
+    margin-top: 12px;
   }
 }
 
@@ -1646,8 +1647,8 @@ body.two-panel-mode .view-toggle::before {
 @media (min-width: 881px) {
   body.two-panel-mode .player-layout {
     display: grid;
-    height: min(600px, calc(100vh - 180px));
-    grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
+    height: min(720px, calc(100vh - 150px));
+    grid-template-columns: minmax(0, 1fr) minmax(470px, 0.95fr);
     isolation: auto;
   }
 
@@ -1678,7 +1679,7 @@ body.two-panel-mode .view-toggle::before {
     width: auto;
     height: 100%;
     min-height: 0;
-    padding: 25px 19px 19px;
+    padding: 24px 24px 21px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 29px;
@@ -1695,7 +1696,7 @@ body.two-panel-mode .view-toggle::before {
   }
 
   body.two-panel-mode .player-layout > .listM .queue-heading h2 {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   body.two-panel-mode .player-layout > .listM .queue-count {
@@ -1705,7 +1706,8 @@ body.two-panel-mode .view-toggle::before {
 
   body.two-panel-mode .player-layout > .listM .queue-caption {
     position: static;
-    margin: 16px 9px 13px;
+    margin: 15px 9px 15px;
+    font-size: 12px;
     transform: none;
   }
 
@@ -1739,13 +1741,13 @@ body.two-panel-mode .view-toggle::before {
     display: flex;
     width: 100%;
     height: auto;
-    min-height: 61px;
+    min-height: 75px;
     align-items: center;
     justify-content: initial;
-    margin: 5px 0;
-    padding: 7px 10px;
+    margin: 6px 0;
+    padding: 9px 12px;
     border: 1px solid transparent;
-    border-radius: 15px;
+    border-radius: 18px;
     background: rgba(255, 255, 255, 0.045);
     box-shadow: none;
     transform: none !important;
@@ -1761,9 +1763,9 @@ body.two-panel-mode .view-toggle::before {
   }
 
   body.two-panel-mode .player-layout > .listM .cacBH img {
-    width: 43px;
-    height: 43px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    border-radius: 15px;
   }
 
   body.two-panel-mode .player-layout > .listM .cacBH .moTa,
@@ -1779,17 +1781,25 @@ body.two-panel-mode .view-toggle::before {
     padding-left: 10px;
   }
 
+  body.two-panel-mode .player-layout > .listM .cacBH .moTa p {
+    font-size: 13px;
+  }
+
+  body.two-panel-mode .player-layout > .listM .cacBH .moTa span {
+    font-size: 11px;
+  }
+
   body.two-panel-mode .player-layout > .listM .active-list {
     width: 100%;
     height: auto;
     justify-content: initial;
-    padding: 7px 10px;
+    padding: 9px 12px;
     transform: none !important;
   }
 
   body.two-panel-mode .player-layout > .listM .active-list img {
-    width: 43px;
-    height: 43px;
+    width: 54px;
+    height: 54px;
   }
 
   body.two-panel-mode .player-layout > .listM .active-list .song-index {

@@ -220,8 +220,8 @@ const musicList = [
         id: 32,
         name: 'Mỗi lần nhớ em là một ngày mưa',
         singer: 'Jack - J97',
-        linkAu: 'MoLanNhoEmLaMotNgayMua.mp3',
-        img: './assests/img/MoLanNhoEmLaMotNgayMua.jpg',
+        linkAu: 'MoiLanNhoEmLaMotNgayMua.mp3',
+        img: './assests/img/MoiLanNhoEmLaMotNgayMua.jpg',
     },
     {
         id: 33,
