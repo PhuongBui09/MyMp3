@@ -19,6 +19,10 @@ const changeVideos = document.querySelector("#changeVideo");
 const videoApps = document.querySelector(".videoapp");
 const control = document.querySelector(".controls");
 const countNumber = document.querySelector(".count-number");
+const orbitStepPrev = document.querySelector(".orbit-step-prev");
+const orbitStepNext = document.querySelector(".orbit-step-next");
+const songSearch = document.querySelector("#songSearch");
+const searchResults = document.querySelector("#searchResults");
 
 displayTimer();
 let timer;
@@ -29,6 +33,7 @@ let isRepeat = false;
 let indexSong = 0;
 let timeoutId;
 let randomIndexes = [];
+let orbitOffset = 0;
 
 //----------Random danh sách bài hát----------
 let musicRandom = musicList.sort(() => Math.random() - 0.5);
@@ -220,6 +225,10 @@ function activeIconRP() {
 }
 //----------Làm chức năng active bài hát----------
 function scrollActiveList() {
+  if (window.matchMedia("(min-width: 881px)").matches) {
+    return;
+  }
+
   if (indexSong == 0) {
     setTimeout(() => {
       document.querySelector(".cacBH.active-list").scrollIntoView({
@@ -248,13 +257,16 @@ playList.addEventListener("click", clickAT);
 function clickAT(playList) {
   const playList1 = playList.target.closest(".cacBH:not(.active-list)");
   if (playList1) {
-    indexSong = Number(playList1.dataset.index);
-    console.log(indexSong);
-    isPlaying = true;
-    init(indexSong);
-    playPause();
-    renderList();
+    selectSongAt(Number(playList1.dataset.index));
   }
+}
+
+function selectSongAt(selectedIndex) {
+  indexSong = selectedIndex;
+  isPlaying = true;
+  init(indexSong);
+  playPause();
+  renderList();
 }
 //----------Làm chức năng hẹn giờ ngủ----------
 function stopMusicAfter(duration) {
@@ -286,13 +298,97 @@ selectElement.addEventListener("change", (event) => {
     stopMusicAfter(60);
   }
 });
+
+function rotateOrbit(direction) {
+  orbitOffset += direction * (360 / musicRandom.length);
+  renderList();
+}
+
+orbitStepPrev.addEventListener("click", () => rotateOrbit(-1));
+orbitStepNext.addEventListener("click", () => rotateOrbit(1));
+playList.addEventListener(
+  "wheel",
+  (event) => {
+    if (window.matchMedia("(min-width: 881px)").matches) {
+      event.preventDefault();
+      rotateOrbit(event.deltaY > 0 ? -1 : 1);
+    }
+  },
+  { passive: false }
+);
+
+function renderSearchResults(query) {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) {
+    searchResults.innerHTML = "";
+    searchResults.parentElement.classList.remove("has-results");
+    return;
+  }
+
+  const matches = musicRandom
+    .map((track, index) => ({ track, index }))
+    .filter(({ track }) =>
+      `${track.name} ${track.singer}`.toLowerCase().includes(normalizedQuery)
+    )
+    .slice(0, 7);
+
+  searchResults.innerHTML = matches.length
+    ? matches
+        .map(
+          ({ track, index }) => `
+            <button class="search-result" type="button" data-search-index="${index}" role="option">
+              <img src="${track.img}" alt="" />
+              <span><strong>${track.name}</strong><small>${track.singer}</small></span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          `
+        )
+        .join("")
+    : '<div class="search-empty">không tìm thấy tín hiệu này</div>';
+  searchResults.parentElement.classList.add("has-results");
+}
+
+songSearch.addEventListener("input", (event) => renderSearchResults(event.target.value));
+songSearch.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const firstResult = searchResults.querySelector("[data-search-index]");
+    if (firstResult) {
+      selectSongAt(Number(firstResult.dataset.searchIndex));
+      songSearch.value = "";
+      renderSearchResults("");
+    }
+  }
+  if (event.key === "Escape") {
+    songSearch.value = "";
+    renderSearchResults("");
+    songSearch.blur();
+  }
+});
+searchResults.addEventListener("click", (event) => {
+  const result = event.target.closest("[data-search-index]");
+  if (!result) return;
+  selectSongAt(Number(result.dataset.searchIndex));
+  songSearch.value = "";
+  renderSearchResults("");
+});
+document.addEventListener("keydown", (event) => {
+  const tagName = document.activeElement?.tagName;
+  if (event.key === "/" && !["INPUT", "TEXTAREA", "SELECT"].includes(tagName)) {
+    event.preventDefault();
+    songSearch.focus();
+  }
+});
 //----------Render list----------
 function renderList() {
   const htmls = musicRandom.map((nhac, index) => {
+    const orbitAngle = (index / musicRandom.length) * 360 + orbitOffset;
+    const orbitAngleReverse = -orbitAngle;
+    const orbitRadius = 208 + (index % 3) * 34;
+    const orbitDepth = 28 + (index % 4) * 16;
     return `
                 <div class="cacBH ${
                   index === indexSong ? "active-list" : ""
-                }" data-index="${index}">
+                }" data-index="${index}" style="--orbit-angle: ${orbitAngle}deg; --orbit-angle-reverse: ${orbitAngleReverse}deg; --orbit-radius: ${orbitRadius}px; --orbit-depth: ${orbitDepth}px;">
                     <img src="${nhac.img}" alt="">
                     <div class="moTa">
                         <p>${nhac.name}</p>
@@ -308,6 +404,7 @@ function renderList() {
 }
 //----------Render----------
 function init(indexSong) {
+  orbitOffset = -(indexSong / musicRandom.length) * 360;
   displayTimer();
   song.setAttribute("src", `./assests/musics/${musicList[indexSong].linkAu}`);
   musicImg.setAttribute("src", musicList[indexSong].img);
@@ -366,6 +463,16 @@ function initMotion() {
     yoyo: true,
     ease: "sine.inOut",
   });
+  if (window.matchMedia("(min-width: 881px)").matches) {
+    gsap.to(".cacBHs", {
+      rotationX: 3,
+      rotationZ: 2,
+      duration: 16,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }
 
   const player = document.querySelector(".music");
   if (window.matchMedia("(pointer: fine)").matches) {

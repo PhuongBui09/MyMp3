@@ -137,14 +137,31 @@
         <aside class="listM" aria-label="Danh sách phát">
           <div class="queue-heading">
             <div>
-              <span class="eyebrow">your collection</span>
-              <h2>Danh sách nhạc</h2>
+              <span class="eyebrow">orbiting collection</span>
+              <h2>Music orbit</h2>
             </div>
-            <span class="queue-count"><span class="count-number">33</span> bài</span>
+            <span class="queue-count"><span class="count-number">33</span> signals</span>
           </div>
           <div class="queue-caption">
-            <span>chọn một bài, thả lỏng một chút</span>
-            <i class="fa-solid fa-arrow-down-long"></i>
+            <span>click a fragment to shift the universe</span>
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </div>
+          <div class="orbit-controls" aria-label="Điều hướng quỹ đạo bài hát">
+            <button class="orbit-step-prev" type="button" aria-label="Xoay quỹ đạo ngược lại">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <span><i class="fa-solid fa-arrows-left-right"></i> scan orbit</span>
+            <button class="orbit-step-next" type="button" aria-label="Xoay quỹ đạo tiếp theo">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+          <div class="quick-pick">
+            <label class="quick-search" for="songSearch">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input id="songSearch" type="search" placeholder="find a song..." autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+            <div class="search-results" id="searchResults" role="listbox" aria-label="Kết quả tìm bài hát"></div>
           </div>
           <div class="cacBHs"></div>
         </aside>
