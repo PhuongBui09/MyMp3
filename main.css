@@ -88,14 +88,14 @@ select {
 .container {
   position: relative;
   z-index: 1;
-  width: min(1400px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 48px));
   height: 100vh;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 18px 0 14px;
+  padding: 30px 0 24px;
   perspective: 1400px;
 }
 
@@ -104,7 +104,7 @@ select {
   align-items: center;
   justify-content: space-between;
   flex: 0 0 auto;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .brand {
@@ -1062,7 +1062,7 @@ select {
   .player-layout {
     position: relative;
     display: block;
-    height: min(760px, calc(100vh - 125px));
+    height: min(700px, calc(100vh - 180px));
     isolation: isolate;
   }
 
@@ -1072,8 +1072,8 @@ select {
     top: 50%;
     left: 50%;
     display: block;
-    width: min(900px, 78vw);
-    height: min(900px, 78vw);
+    width: min(760px, 72vw);
+    height: min(760px, 72vw);
     content: "";
     pointer-events: none;
     border: 1px solid rgba(255, 174, 205, 0.15);
@@ -1083,8 +1083,8 @@ select {
   }
 
   .player-layout::after {
-    width: min(1120px, 98vw);
-    height: min(520px, 50vw);
+    width: min(980px, 94vw);
+    height: min(440px, 43vw);
     border-color: rgba(181, 165, 255, 0.12);
     box-shadow: 0 0 110px rgba(181, 165, 255, 0.08);
     transform: translate(-50%, -50%) rotateY(62deg) rotateZ(16deg);
@@ -1102,7 +1102,7 @@ select {
   }
 
   .player-layout > .app .music {
-    width: min(580px, 100%);
+    width: min(530px, 100%);
     height: 100%;
     pointer-events: auto;
     background: linear-gradient(145deg, rgba(50, 41, 74, 0.86), rgba(20, 17, 34, 0.78));
@@ -1111,25 +1111,25 @@ select {
   }
 
   .player-layout > .app .album-stage {
-    width: 258px;
-    height: 258px;
-    margin-top: 14px;
-    margin-bottom: 18px;
+    width: 238px;
+    height: 238px;
+    margin-top: 19px;
+    margin-bottom: 24px;
   }
 
   .player-layout > .app .music-img {
-    width: 206px;
-    height: 206px;
+    width: 188px;
+    height: 188px;
   }
 
   .player-layout > .app .stage-ring-one {
-    width: 242px;
-    height: 242px;
+    width: 222px;
+    height: 222px;
   }
 
   .player-layout > .app .stage-ring-two {
-    width: 258px;
-    height: 258px;
+    width: 238px;
+    height: 238px;
   }
 
   .player-layout > .listM {
@@ -1246,13 +1246,13 @@ select {
     top: 50%;
     left: 50%;
     display: flex;
-    width: 76px;
-    height: 76px;
+    width: 66px;
+    height: 66px;
     min-height: 0;
     align-items: center;
     justify-content: center;
     margin: 0;
-    padding: 6px;
+    padding: 5px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 20px;
     background: rgba(36, 30, 57, 0.72);
@@ -1270,8 +1270,8 @@ select {
   }
 
   .player-layout > .listM .cacBH img {
-    width: 62px;
-    height: 62px;
+    width: 54px;
+    height: 54px;
     border: 2px solid rgba(255, 255, 255, 0.16);
     border-radius: 16px;
   }
@@ -1301,8 +1301,8 @@ select {
 
   .player-layout > .listM .cacBH.active-list {
     z-index: 6;
-    width: 202px;
-    height: 78px;
+    width: 182px;
+    height: 72px;
     justify-content: flex-start;
     padding: 7px;
     border-color: rgba(255, 174, 205, 0.7);
@@ -1312,15 +1312,15 @@ select {
   }
 
   .player-layout > .listM .active-list img {
-    width: 62px;
-    height: 62px;
+    width: 56px;
+    height: 56px;
     flex: 0 0 auto;
     border-radius: 16px;
   }
 
   .player-layout > .listM .active-list .moTa {
     display: block;
-    width: 110px;
+    width: 94px;
     margin-left: 9px;
   }
 
@@ -1341,7 +1341,6 @@ select {
   .page-footer {
     position: relative;
     z-index: 5;
-    margin-top: 12px;
   }
 }
 
@@ -1647,7 +1646,7 @@ body.two-panel-mode .view-toggle::before {
 @media (min-width: 881px) {
   body.two-panel-mode .player-layout {
     display: grid;
-    height: min(640px, calc(100vh - 150px));
+    height: min(600px, calc(100vh - 180px));
     grid-template-columns: minmax(0, 1.06fr) minmax(360px, 0.94fr);
     isolation: auto;
   }

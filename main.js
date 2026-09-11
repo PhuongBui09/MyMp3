@@ -462,7 +462,7 @@ function renderList() {
   const htmls = musicRandom.map((nhac, index) => {
     const orbitAngle = (index / musicRandom.length) * 360 + orbitOffset;
     const orbitAngleReverse = -orbitAngle;
-    const orbitRadius = 300 + (index % 3) * 48;
+    const orbitRadius = 250 + (index % 3) * 42;
     const orbitDepth = 28 + (index % 4) * 16;
     return `
                 <div class="cacBH ${
